@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Entrada de distancia (entero)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    .campo { display: grid; gap: 8px; max-width: 360px; }
+    input { padding: 8px 10px; border: 1px solid #ccc; border-radius: 8px; }
+    small { color: #666; }
+  </style>
+</head>
+<body>
+  <h2>Distancia a la casa de Goku</h2>
+
+  <div class="campo">
+    <label for="distancia">Ingresa un número entero (≥ 0):</label>
+    <input
+      id="distancia"
+      type="number"
+      inputmode="numeric"
+      min="0"
+      step="1"
+      placeholder="Ej: 42"
+      required
+    />
+    <small>Solo enteros. No se permiten decimales ni notación científica.</small>
+  </div>
+
+  <script>
+    // Evita caracteres no deseados en <input type="number">
+    const input = document.getElementById('distancia');
+    input.addEventListener('keydown', (e) => {
+      // Bloquea ., e/E, + y - para que sea entero no negativo
+      if (['.', ',', 'e', 'E', '+', '-'].includes(e.key)) {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
